@@ -26,7 +26,7 @@ def sync_nfl_data():
             pl.col("player_id"),
             pl.col("player_display_name").alias("name"),
             pl.col("position"),
-            pl.col("recent_team").alias("team"),
+            pl.col("team"),
             pl.col("fantasy_points_ppr"),
         ])
         .unique(subset=["player_id"])
