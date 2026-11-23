@@ -1,0 +1,323 @@
+.page {
+  --board: #13203b;
+  --board-deep: #0b1529;
+  --red: #d7263d;
+  --red-dark: #b81d31;
+  --chalk: #f4f6fa;
+  --muted: #9aa8c2;
+  --steel: #5b7db8;
+  --line: #2a3a5c;
+  --blue: #1d5fd6;
+  --blue-dark: #174bb0;
+  --goalpost: #f2c12e;
+
+  flex: 1;
+  background: var(--board-deep);
+  color: var(--chalk);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  padding: clamp(4rem, 10vw, 7rem) 1rem 3rem;
+  overflow: hidden;
+  /* A football field: a soft shade on the left for legible text,
+     white yard lines every 5 yards, and mowed stripes between them */
+  background:
+    linear-gradient(90deg, rgb(11 21 41 / 0.55) 0%, rgb(11 21 41 / 0.2) 55%, rgb(11 21 41 / 0) 100%),
+    repeating-linear-gradient(90deg, transparent 0 calc(10% - 3px), rgb(255 255 255 / 0.8) calc(10% - 3px) 10%),
+    repeating-linear-gradient(90deg, #3e8e41 0 10%, #469a48 10% 20%);
+  border-bottom: 3px solid var(--red);
+}
+
+/* Hash marks every yard along the top and bottom of the field */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.7) 0 2px, transparent 2px 2%);
+}
+
+.hero::before {
+  top: 14px;
+}
+
+.hero::after {
+  bottom: 14px;
+}
+
+.heroInner,
+.toc {
+  position: relative;
+  z-index: 1;
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.kicker {
+  margin: 0 0 1rem;
+  color: var(--goalpost);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 0;
+  max-width: 13ch;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 0 rgb(11 21 41 / 0.35);
+}
+
+.heroSub {
+  max-width: 52ch;
+  margin: 1.5rem 0 0;
+  color: rgb(244 246 250 / 0.92);
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.primary,
+.secondary {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Blue buttons so they stand out on the green field */
+.primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--blue-dark);
+}
+
+.secondary {
+  border: 1px solid rgb(255 255 255 / 0.35);
+  background: var(--board);
+  color: var(--chalk);
+}
+
+.secondary:hover {
+  background: #1b2b4d;
+}
+
+/* Chapter list in the hero */
+
+.toc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1100px;
+  margin: clamp(3rem, 8vw, 5rem) auto 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgb(255 255 255 / 0.35);
+}
+
+.toc a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1rem 0.25rem;
+  color: rgb(244 246 250 / 0.85);
+  font-weight: 600;
+}
+
+.toc a:hover {
+  color: #fff;
+}
+
+.tocNumber {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.5rem;
+  color: var(--goalpost);
+}
+
+/* Full-screen Fantasy chapter: field centered with navy space around it */
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  min-height: 100svh;
+  padding: clamp(3rem, 7vw, 5rem) 1rem;
+  text-align: center;
+  scroll-margin-top: 1rem;
+  /* Keep the hover grow from causing a sideways scrollbar */
+  overflow-x: clip;
+}
+
+.featureHead {
+  max-width: 640px;
+}
+
+.featureHead /* Chapter headings */
+
+.chapterLabel {
+  justify-content: center;
+}
+
+.featurePoints {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.75rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featurePoints li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.featurePoints li::before {
+  content: "×";
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* Clickable field: grows a little and gets a white glow that follows its shape */
+.fieldLink {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  outline: none;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.fieldLink:hover,
+.fieldLink:focus-visible {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 14px rgb(255 255 255 / 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldLink {
+    transition: none;
+  }
+
+  .fieldLink:hover,
+  .fieldLink:focus-visible {
+    transform: none;
+  }
+}
+
+.feature + .feature {
+  border-top: 1px dashed var(--line);
+}
+
+.chapterLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.chapterNumber {
+  font-family: var(--font-display), sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--red);
+}
+
+.chapterTitle {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  text-transform: uppercase;
+}
+
+.chapterBody {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.chapterLink {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.chapterLink:hover {
+  color: var(--red);
+}
+
+/* Closing call to action */
+
+.final {
+  padding: clamp(4rem, 9vw, 6rem) 1rem;
+  text-align: center;
+  background: var(--board);
+  border-top: 3px solid var(--red);
+}
+
+.finalTitle {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  text-transform: uppercase;
+}
+
+.finalSub {
+  max-width: 46ch;
+  margin: 1rem auto 2rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.disclaimer {
+  margin: 2.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Phones and small tablets */
+
+@media (max-width: 800px) {
+  .toc {
+    grid-template-columns: 1fr;
+  }
+
+  .toc li + li {
+    border-top: 1px solid var(--line);
+  }
+}

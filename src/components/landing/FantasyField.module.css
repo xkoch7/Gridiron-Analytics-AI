@@ -1,0 +1,12 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Transparent canvas: the field floats on the page's navy background */
+.canvas {
+  display: block;
+  max-width: 100%;
+  image-rendering: pixelated;
+}

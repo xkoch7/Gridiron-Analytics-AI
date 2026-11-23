@@ -1,0 +1,13 @@
+/* Big, wide stage so the ball fills the section */
+.wrap {
+  width: 100%;
+  max-width: 1300px;
+  height: min(68svh, 56vw);
+  min-height: 260px;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

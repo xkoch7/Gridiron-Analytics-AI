@@ -1,0 +1,29 @@
+/* Wide stage for the living room, framed like a window into the scene */
+.wrap {
+  width: 100%;
+  max-width: 1300px;
+  height: min(70svh, 56vw);
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0d1018;
+  box-shadow:
+    0 0 0 1px #2a3a5c,
+    0 30px 80px rgb(0 0 0 / 0.45);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Soft cinematic vignette over the scene */
+.wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(0 0 0 / 0.45) 100%);
+}

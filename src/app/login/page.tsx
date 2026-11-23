@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import styles from "./login.module.css";
@@ -18,6 +18,12 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   const isSignup = mode === "signup";
+
+  // Show errors passed back from /auth/callback (e.g. a cancelled Google sign-in)
+  useEffect(() => {
+    const callbackError = new URLSearchParams(window.location.search).get("error");
+    if (callbackError) setError(callbackError);
+  }, []);
 
   function toggleMode() {
     setMode(isSignup ? "login" : "signup");
@@ -38,7 +44,7 @@ export default function LoginPage() {
         options: {
           // Picked up by the handle_new_user trigger to fill in the profile
           data: { display_name: displayName },
-          emailRedirectTo: `${window.location.origin}/account`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/account`,
         },
       });
       setLoading(false);
@@ -54,6 +60,7 @@ export default function LoginPage() {
     }
 
     router.push("/account");
+    router.refresh();
   }
 
   // OAuth works the same for login and signup: Supabase creates the user on first sign-in
@@ -63,7 +70,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/account`,
+        redirectTo: `${window.location.origin}/auth/callback?next=/account`,
         // Azure needs the email scope to return the user's address
         scopes: provider === "azure" ? "email" : undefined,
       },

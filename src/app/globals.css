@@ -7,6 +7,8 @@
   --accent: #d7263d;
   --accent-dark: #b81d31;
   --steel: #5b7db8;
+  --blue: #1d5fd6;
+  --blue-dark: #174bb0;
   --border: #2a3a5c;
 }
 
@@ -116,7 +118,7 @@ main.container:has(> .full-bleed) {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  background: var(--accent);
+  background: var(--blue);
   color: #fff;
   font: inherit;
   font-weight: 700;
@@ -124,7 +126,7 @@ main.container:has(> .full-bleed) {
 }
 
 .btn:hover:not(:disabled) {
-  background: var(--accent-dark);
+  background: var(--blue-dark);
 }
 
 .link-btn {
