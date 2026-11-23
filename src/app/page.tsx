@@ -75,7 +75,7 @@ export default function LandingPage() {
         </div>
 
         {/* The whole field links to the Fantasy page; it grows and glows on hover */}
-        <Link href="/fantasy" className={styles.fieldLink} aria-label="Open Fantasy">
+        <Link href="/fantasy" className={styles.sceneLink} aria-label="Open Fantasy">
           <FantasyField />
         </Link>
 
@@ -96,17 +96,16 @@ export default function LandingPage() {
           <p className={styles.chapterBody}>{betting.body}</p>
         </div>
 
-        {/* Floats and spins; flips and locks into place on hover */}
-        <BettingBall />
+        {/* The ball links to the Betting page; it flips and locks into place on hover */}
+        <Link href="/betting" className={styles.sceneLink} aria-label="Open Betting Assistant">
+          <BettingBall />
+        </Link>
 
         <ul className={styles.featurePoints}>
           {betting.points.map((p) => (
             <li key={p}>{p}</li>
           ))}
         </ul>
-        <Link href="/betting" className={styles.chapterLink}>
-          Open Betting Assistant <span aria-hidden="true">→</span>
-        </Link>
       </section>
 
       <section id="chapter-03" className={styles.feature}>
@@ -119,17 +118,16 @@ export default function LandingPage() {
           <p className={styles.chapterBody}>{teams.body}</p>
         </div>
 
-        {/* Game day in the living room; the camera drifts toward the pointer */}
-        <LivingRoom />
+        {/* The living room links to Team Stats; the camera drifts toward the pointer */}
+        <Link href="/teams" className={styles.sceneLink} aria-label="Open Team Stats">
+          <LivingRoom />
+        </Link>
 
         <ul className={styles.featurePoints}>
           {teams.points.map((p) => (
             <li key={p}>{p}</li>
           ))}
         </ul>
-        <Link href="/teams" className={styles.chapterLink}>
-          Open Team Stats <span aria-hidden="true">→</span>
-        </Link>
       </section>
 
       <section className={styles.final}>

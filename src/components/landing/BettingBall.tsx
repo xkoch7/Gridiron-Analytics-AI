@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./BettingBall.module.css";
 
-// A realistic 3D football that floats, slowly spins and drifts through different tilts.
+// A realistic 3D football that floats on a diagonal and spirals around its long axis.
 // On hover it flips end over end and locks into a pose with the laces facing the viewer;
 // when the pointer leaves it eases back into floating.
 
@@ -20,13 +20,18 @@ const TAU = Math.PI * 2;
 
 type Pose = { y: number; yaw: number; tilt: number; roll: number; spin: number };
 
+// Idle: the ball holds a diagonal tilt (low-left tip to high-right tip) and spirals
+// around its own long axis, like a tight pass, with a gentle wobble.
+const IDLE_TILT = 0.45; // nose up toward the right
+const IDLE_YAW = 0.12; // left tip turned slightly toward the viewer for depth
+
 function idlePose(t: number): Pose {
   return {
     y: Math.sin(t * 1.2) * 0.1,
-    yaw: t * 0.35,
-    tilt: Math.sin(t * 0.45) * 0.35,
-    roll: Math.sin(t * 0.6 + 1) * 0.3,
-    spin: t * 0.5,
+    yaw: IDLE_YAW + Math.sin(t * 0.4) * 0.08,
+    tilt: IDLE_TILT + Math.sin(t * 0.55) * 0.06,
+    roll: 0,
+    spin: t * 1.4,
   };
 }
 

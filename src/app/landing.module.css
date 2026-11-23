@@ -182,8 +182,8 @@
   font-weight: 700;
 }
 
-/* Clickable field: grows a little and gets a white glow that follows its shape */
-.fieldLink {
+/* Clickable scenes (field, ball, living room): grow a little and get a white glow that follows their shape */
+.sceneLink {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -193,19 +193,19 @@
     filter 0.25s ease;
 }
 
-.fieldLink:hover,
-.fieldLink:focus-visible {
+.sceneLink:hover,
+.sceneLink:focus-visible {
   transform: scale(1.04);
   filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 14px rgb(255 255 255 / 0.55));
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fieldLink {
+  .sceneLink {
     transition: none;
   }
 
-  .fieldLink:hover,
-  .fieldLink:focus-visible {
+  .sceneLink:hover,
+  .sceneLink:focus-visible {
     transform: none;
   }
 }
@@ -245,20 +245,6 @@
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.6;
-}
-
-.chapterLink {
-  display: inline-block;
-  margin-top: 1.75rem;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
-}
-
-.chapterLink:hover {
-  color: var(--red);
 }
 
 /* Closing call to action */
