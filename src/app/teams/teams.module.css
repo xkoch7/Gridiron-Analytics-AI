@@ -1,0 +1,86 @@
+.leaders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.leader {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.leaderLabel {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.leaderValue {
+  margin: 0.35rem 0 0.1rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 2rem;
+}
+
+.conference + .conference {
+  margin-top: 2rem;
+}
+
+.conferenceTitle {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+}
+
+.divisions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tighter cells so all stat columns fit beside the team name */
+.compact th,
+.compact td {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.compact th:first-child,
+.compact td:first-child {
+  padding-left: 1.1rem;
+}
+
+.compact th:last-child,
+.compact td:last-child {
+  padding-right: 1.1rem;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.abbr {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.6rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 5px;
+  background: var(--surface-raised);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.teamName {
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .divisions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

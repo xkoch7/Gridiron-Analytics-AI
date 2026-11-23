@@ -22,32 +22,12 @@
   position: relative;
   padding: clamp(4rem, 10vw, 7rem) 1rem 3rem;
   overflow: hidden;
-  /* A football field: a soft shade on the left for legible text,
-     white yard lines every 5 yards, and mowed stripes between them */
+  /* Fallback field if WebGL is unavailable; the 3D grass (HeroGrass) draws over it */
   background:
     linear-gradient(90deg, rgb(11 21 41 / 0.55) 0%, rgb(11 21 41 / 0.2) 55%, rgb(11 21 41 / 0) 100%),
     repeating-linear-gradient(90deg, transparent 0 calc(10% - 3px), rgb(255 255 255 / 0.8) calc(10% - 3px) 10%),
     repeating-linear-gradient(90deg, #3e8e41 0 10%, #469a48 10% 20%);
   border-bottom: 3px solid var(--red);
-}
-
-/* Hash marks every yard along the top and bottom of the field */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.7) 0 2px, transparent 2px 2%);
-}
-
-.hero::before {
-  top: 14px;
-}
-
-.hero::after {
-  bottom: 14px;
 }
 
 .heroInner,

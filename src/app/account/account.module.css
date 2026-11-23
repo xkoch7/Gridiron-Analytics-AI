@@ -1,0 +1,117 @@
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--blue);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.6rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+/* Profile form */
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 480px;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ok {
+  color: #4fd08a;
+  font-size: 0.85rem;
+}
+
+.error {
+  color: #ff6b7d;
+  font-size: 0.85rem;
+}
+
+/* Session */
+
+.sessionText {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.signOut {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.signOut:hover {
+  border-color: #ff6b7d;
+  color: #ff6b7d;
+}
+
+@media (max-width: 600px) {
+  .meta {
+    justify-items: start;
+    margin-left: 0;
+  }
+}

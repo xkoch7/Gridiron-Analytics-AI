@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BettingBall from "@/components/landing/BettingBall";
 import FantasyField from "@/components/landing/FantasyField";
+import HeroGrass from "@/components/landing/HeroGrass";
 import LivingRoom from "@/components/landing/LivingRoom";
 import styles from "./landing.module.css";
 
@@ -29,6 +30,7 @@ export default function LandingPage() {
   return (
     <div className={`${styles.page} full-bleed`}>
       <section className={styles.hero}>
+        <HeroGrass />
         <div className={styles.heroInner}>
           <p className={styles.kicker}>AI-powered NFL predictions</p>
           <h1 className={styles.heroTitle}>Win the week before kickoff.</h1>
