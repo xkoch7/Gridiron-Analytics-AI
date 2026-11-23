@@ -7,6 +7,9 @@ import styles from "./login.module.css";
 
 type Mode = "login" | "signup";
 
+// Google/Microsoft buttons stay hidden until those providers are set up in Supabase
+const OAUTH_ENABLED = false;
+
 export default function LoginPage() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("login");
@@ -49,6 +52,11 @@ export default function LoginPage() {
       });
       setLoading(false);
       if (error) return setError(error.message);
+      // Supabase doesn't error on an already-registered email (to avoid leaking
+      // which emails exist); it returns a user with no identities instead
+      if (data.user && data.user.identities?.length === 0) {
+        return setError("An account with this email already exists. Try logging in instead.");
+      }
       // No session means email confirmation is required first
       if (!data.session) {
         return setMessage("Check your email for a link to confirm your account.");
@@ -144,6 +152,7 @@ export default function LoginPage() {
             </button>
           </form>
 
+          {OAUTH_ENABLED && (<>
           <div className={styles.divider}>or</div>
 
           <div className={styles.oauthButtons}>
@@ -166,6 +175,7 @@ export default function LoginPage() {
               {oauthVerb} with Microsoft
             </button>
           </div>
+          </>)}
 
           <button type="button" className={styles.toggle} onClick={toggleMode}>
             {isSignup ? "Already have an account? Log in" : "Don't have an account? Sign up"}
