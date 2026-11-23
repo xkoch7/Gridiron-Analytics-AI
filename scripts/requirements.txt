@@ -1,0 +1,7 @@
+python-dotenv
+supabase
+nflreadpy
+polars
+pandas
+scikit-learn
+joblib
